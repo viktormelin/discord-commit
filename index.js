@@ -64,7 +64,6 @@ const run = async () => {
           url: payloadUrl,
           icon_url: `https://github.com/${pusher}.png?size=64`,
         },
-        // timestamp: Date.parse(commits[0].timestamp),
       },
     ],
     username: username,
