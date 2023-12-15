@@ -43,16 +43,13 @@ const run = async () => {
   const webhook = core.getInput('webhook');
   const color = core.getInput('color');
 
-  console.log('Webhook:', webhook);
-  console.log('Color:', color);
-
-  const embedMessage = {
+  const requestBody = {
     embeds: [
       {
         description: formatDescription(commits, size),
         color: color,
         author: {
-          name: `⚡ ${pusher} pushed ${size} commit${size === 1 ? '' : 's'}`,
+          name: `🚀 ${pusher} pushed ${size} commit${size === 1 ? '' : 's'}`,
           url: payloadUrl,
           icon_url: `https://github.com/${pusher}.png?size=64`,
         },
@@ -62,26 +59,7 @@ const run = async () => {
     username: username,
   };
 
-  console.log('Embed Message:', embedMessage);
-
-  // const embedMessage = {
-  //   author: {
-  //     name: `⚡ ${pusher} pushed ${size} commit${size === 1 ? '' : 's'}`,
-  //     iconURL: `https://github.com/${pusher}.png?size=64`,
-  //     url: payloadUrl,
-  //   },
-  //   color,
-  //   description: formatDescription(commits, size),
-  //   timestamp: Date.parse(commits[0].timestamp),
-  // };
-
-  const requestBody = {
-    embeds: [embedMessage],
-  };
-
   const url = `${webhook}?wait=true`;
-
-  console.log(url);
 
   fetch(url, {
     method: 'POST',
