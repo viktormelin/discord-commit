@@ -66,7 +66,11 @@ const run = async () => {
     body: JSON.stringify(requestBody),
     headers: { 'Content-Type': 'application/json' },
   })
-    .then((response) => response.json())
+    .then((response) => {
+      const data = response.json();
+      console.log(data);
+      return data;
+    })
     .then((data) => core.info(JSON.stringify(data)))
     .catch((error) => core.info(error));
 };
