@@ -44,15 +44,31 @@ const run = async () => {
   const color = core.getInput('color');
 
   const embedMessage = {
-    author: {
-      name: `⚡ ${pusher} pushed ${size} commit${size === 1 ? '' : 's'}`,
-      iconURL: `https://github.com/${pusher}.png?size=64`,
-      url: payloadUrl,
-    },
-    color,
-    description: formatDescription(commits, size),
-    timestamp: Date.parse(commits[0].timestamp),
+    embeds: [
+      {
+        description: formatDescription(commits, size),
+        color: color,
+        author: {
+          name: `⚡ ${pusher} pushed ${size} commit${size === 1 ? '' : 's'}`,
+          url: payloadUrl,
+          icon_url: `https://github.com/${pusher}.png?size=64`,
+        },
+        timestamp: Date.parse(commits[0].timestamp),
+      },
+    ],
+    username: username,
   };
+
+  // const embedMessage = {
+  //   author: {
+  //     name: `⚡ ${pusher} pushed ${size} commit${size === 1 ? '' : 's'}`,
+  //     iconURL: `https://github.com/${pusher}.png?size=64`,
+  //     url: payloadUrl,
+  //   },
+  //   color,
+  //   description: formatDescription(commits, size),
+  //   timestamp: Date.parse(commits[0].timestamp),
+  // };
 
   const requestBody = {
     embeds: [embedMessage],
