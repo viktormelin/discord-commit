@@ -20,9 +20,6 @@ const formatDescription = (commits, size) => {
         : commit.message;
     changelog += `[\`${sha}\`](${commit.url}) — ${message} ([\`${commit.author.username}\`](https://github.com/${commit.author.username}))\n`;
   }
-
-  console.log('Changelog:', changelog);
-
   return changelog;
 };
 
@@ -50,10 +47,6 @@ const run = async () => {
   const webhook = core.getInput('webhook');
   const color = core.getInput('color');
 
-  console.log('Webhook:', webhook);
-  console.log('Color:', color);
-  console.log('Username:', username);
-
   const requestBody = {
     embeds: [
       {
@@ -68,8 +61,6 @@ const run = async () => {
     ],
     username: username,
   };
-
-  console.log('Body:', requestBody);
 
   const url = `${webhook}?wait=true`;
 
