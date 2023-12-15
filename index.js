@@ -29,6 +29,7 @@ const run = async () => {
   const commits = payload.commits;
   const username = repositoryName.replace(/(discord)/gi, '******');
   const size = commits.length;
+  const payloadUrl = payload.compare;
 
   console.log('Received payload...');
 
@@ -41,11 +42,10 @@ const run = async () => {
   const color = core.getInput('color');
 
   const embedMessage = {
-    url: context.htmlUrl,
     author: {
       name: `⚡ ${pusher} pushed ${size} commit${size === 1 ? '' : 's'}`,
       iconURL: `https://github.com/${pusher}.png?size=64`,
-      url: payload.compare,
+      url: payloadUrl,
     },
     color,
     description: formatDescription(commits, size),
