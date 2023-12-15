@@ -40,6 +40,7 @@ const run = async () => {
   console.log('Pusher:', pusher);
   console.log('Size:', size);
   console.log('Timestamp:', commits[0].timestamp);
+  console.log('Payload URL:', payloadUrl);
 
   if (commits.length === 0) {
     console.log('No commits! Skipping...');
@@ -57,13 +58,13 @@ const run = async () => {
     embeds: [
       {
         description: formatDescription(commits, size),
-        color: color,
+        // color: color,
         author: {
           name: `🚀 ${pusher} pushed ${size} commit${size === 1 ? '' : 's'}`,
-          url: payloadUrl,
+          // url: payloadUrl,
           icon_url: `https://github.com/${pusher}.png?size=64`,
         },
-        timestamp: Date.parse(commits[0].timestamp),
+        // timestamp: Date.parse(commits[0].timestamp),
       },
     ],
     username: username,
