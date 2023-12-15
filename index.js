@@ -58,10 +58,10 @@ const run = async () => {
     embeds: [
       {
         description: formatDescription(commits, size),
-        // color: color,
+        color: color,
         author: {
           name: `🚀 ${pusher} pushed ${size} commit${size === 1 ? '' : 's'}`,
-          // url: payloadUrl,
+          url: payloadUrl,
           icon_url: `https://github.com/${pusher}.png?size=64`,
         },
         // timestamp: Date.parse(commits[0].timestamp),
