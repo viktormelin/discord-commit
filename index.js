@@ -2,6 +2,8 @@ import core from '@actions/core';
 import github from '@actions/github';
 import fetch from 'node-fetch';
 
+const MAX_MESSAGE_LENGTH = 72;
+
 const formatDescription = (commits, size) => {
   let changelog = '';
   for (const i in commits) {
