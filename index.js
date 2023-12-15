@@ -21,6 +21,8 @@ const formatDescription = (commits, size) => {
     changelog += `[\`${sha}\`](${commit.url}) — ${message} ([\`${commit.author.username}\`](https://github.com/${commit.author.username}))\n`;
   }
 
+  console.log('Changelog:', changelog);
+
   return changelog;
 };
 
@@ -34,6 +36,10 @@ const run = async () => {
   const payloadUrl = payload.compare;
 
   console.log('Received payload...');
+
+  console.log('Pusher:', pusher);
+  console.log('Size:', size);
+  console.log('Timestamp:', commits[0].timestamp);
 
   if (commits.length === 0) {
     console.log('No commits! Skipping...');
@@ -66,13 +72,9 @@ const run = async () => {
     body: JSON.stringify(requestBody),
     headers: { 'Content-Type': 'application/json' },
   })
-    .then((response) => {
-      const data = response.json();
-      console.log(data);
-      return data;
-    })
+    .then((res) => res.json())
     .then((data) => core.info(JSON.stringify(data)))
-    .catch((error) => core.info(error));
+    .catch((err) => core.info(err));
 };
 
 run()
