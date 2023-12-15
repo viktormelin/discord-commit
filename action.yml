@@ -1,0 +1,17 @@
+name: Github Webhook To Discord
+author: viktormelin
+description: Automatically send a stylized Discord webhook of a GitHub commit.
+inputs:
+  webhook:
+    description: Discord's webhook url. Use GH repo secrets.
+    required: true
+  color:
+    description: Decimal color value for embed.
+    required: false
+    default: '2105893'
+runs:
+  using: 'node16'
+  main: 'index.js'
+branding:
+  icon: file-text
+  color: blue
