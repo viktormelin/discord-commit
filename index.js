@@ -43,6 +43,9 @@ const run = async () => {
   const webhook = core.getInput('webhook');
   const color = core.getInput('color');
 
+  console.log('Webhook:', webhook);
+  console.log('Color:', color);
+
   const embedMessage = {
     embeds: [
       {
@@ -58,6 +61,8 @@ const run = async () => {
     ],
     username: username,
   };
+
+  console.log('Embed Message:', embedMessage);
 
   // const embedMessage = {
   //   author: {
