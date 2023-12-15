@@ -49,6 +49,10 @@ const run = async () => {
   const webhook = core.getInput('webhook');
   const color = core.getInput('color');
 
+  console.log('Webhook:', webhook);
+  console.log('Color:', color);
+  console.log('Username:', username);
+
   const requestBody = {
     embeds: [
       {
@@ -65,6 +69,8 @@ const run = async () => {
     username: username,
   };
 
+  console.log('Body:', requestBody);
+
   const url = `${webhook}?wait=true`;
 
   fetch(url, {
@@ -74,7 +80,10 @@ const run = async () => {
   })
     .then((res) => res.json())
     .then((data) => core.info(JSON.stringify(data)))
-    .catch((err) => core.info(err));
+    .catch((err) => {
+      console.error(err);
+      core.info(err);
+    });
 };
 
 run()
@@ -82,5 +91,6 @@ run()
     core.info('Action completed!');
   })
   .catch((error) => {
+    console.error(error);
     core.setFailed(error.message);
   });
