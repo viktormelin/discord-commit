@@ -76,6 +76,8 @@ const run = async () => {
 
   const url = `${webhook}?wait=true`;
 
+  console.log(url);
+
   fetch(url, {
     method: 'POST',
     body: JSON.stringify(requestBody),
