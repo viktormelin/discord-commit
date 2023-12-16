@@ -34,11 +34,6 @@ const run = async () => {
 
   console.log('Received payload...');
 
-  console.log('Pusher:', pusher);
-  console.log('Size:', size);
-  console.log('Timestamp:', commits[0].timestamp);
-  console.log('Payload URL:', payloadUrl);
-
   if (commits.length === 0) {
     console.log('No commits! Skipping...');
     return;
