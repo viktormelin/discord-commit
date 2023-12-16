@@ -7,7 +7,7 @@ const MAX_MESSAGE_LENGTH = 72;
 const formatDescription = (commits, size) => {
   let changelog = '';
   for (const i in commits) {
-    if (i > 7) {
+    if (i > 50) {
       changelog += `+ ${size - i} more...\n`;
       break;
     }
